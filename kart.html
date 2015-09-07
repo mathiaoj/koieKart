@@ -1,10 +1,65 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>KoieKart</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+		<title>KoieKart - Koier - NTNU</title> 
+		<script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
 	</head>
 	
 	<body>
 		<h1>Kart<h1>
-		
+		<div id="map" style="width: 500px; height: 400px;"></div>
+
+  <script type="text/javascript">
+    var locations = [
+				['Flåkoia', 63.15702,10.36538, 1],
+				['Fosenkoia', 63.56813, 10.29541, 2],
+				['Heinfjordstua', 63.31492,10.75206, 3],
+				['Hognabu',63.10875,11.53450, 4],
+				['Holmsåkoia',63.08642, 11.64870, 5],
+				['Holvassgamma',  63.82745, 10.37133, 6],
+				['Iglbu', 62.96119, 10.09028, 7],
+				['Kamtjønnkoia', 62.74317, 09.29119, 8],
+				['Kråklikåten', 63.12292, 10.59167, 9],
+				['Kåsen', 63.12375, 09.44338, 10],
+				['Lynhøgen', 63.21028, 10.70875, 11],
+				['Mortenskåten', 63.01650, 10.95894, 12],
+				['Nicokoia', 63.16349, 10.52637, 13],
+				['Rindalsløa', 63.01999, 09.19786, 14],
+				['Selbukåten', 63.32851, 11.02758, 15],
+				['Sonvasskoia', 63.39030, 11.41852, 16],
+				['Stabburet', 63.14200, 11.72236, 17],
+				['Stakkslettbua', 63.14713, 09.11576 , 18],	
+				['Telin', 62.87615, 09.66196, 19],
+				['Taagaabu', 62.82197, 10.60875, 20],
+				['Vekvessætra', 62.70850, 09.80087, 21],
+				['Øvensenget', 62.41219, 11.18655, 22]
+				];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: new google.maps.LatLng(63.12292, 10.59167),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
 	</body>
 </html>
