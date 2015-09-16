@@ -5,11 +5,44 @@
 		<title>KoieKart - Koier - NTNU</title> 
 		<script src="http://maps.google.com/maps/api/js?sensor=false" 
           type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	
 	<body>
-		<h1>Kart<h1>
-		<div id="map" style="width: 500px; height: 400px;"></div>
+		<div id = "container">
+            <div id= "meny">
+                <div class = "but"></div>
+                <div class = "but"></div>
+                <div class = "but"><h4>Koier</h4></div>
+                <div class = "but"></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(0)>Flåkoia</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(1)>Fosenkoia</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(2)>Heinfjordstua</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(3)>Hognabu</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(4)>Holmsåkoia</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(5)>Holvassgamma</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(6)>Iglbu</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(7)>Kamtjønnkoia</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(8)>Kråklikåten</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(9)>Kåsen</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(10)>Lynhøgen</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(11)>Mortenskåten</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(12)>Nicokoia</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(13)>Rindalsløa</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(14)>Selbukåten</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(15)>Sonvasskoia</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(16)>Stabburet</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(17)>Stakkslettbua</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(18)>Telin</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(19)>Taagaabu</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(20)>Vekvessætra</button></div>
+                <div class = "but"><button class = "loc" onclick = myFunction(21)>Øvensenget</button></div>
+            </div>
+            <div id = "overskrift">    
+                <h1>Oversiktskart<h1>
+            </div>
+			<div id="map"></div>
+		</div>
 
   <script type="text/javascript">
     var locations = [
@@ -46,13 +79,15 @@
     var infowindow = new google.maps.InfoWindow();
 
     var marker, i;
-
+    
+    var markers = [];
+    
     for (i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map
       });
-
+      markers.push(marker);
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           infowindow.setContent(locations[i][0]);
@@ -60,6 +95,9 @@
         }
       })(marker, i));
     }
+    function myFunction(i) {
+        google.maps.event.trigger(markers[i], 'click');
+   }
   </script>
 	</body>
 </html>
