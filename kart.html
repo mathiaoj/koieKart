@@ -13,7 +13,6 @@
             <div id= "meny">
                 <div class = "but"></div>
                 <div class = "but"></div>
-                <div class = "but"><h4>Koier</h4></div>
                 <div class = "but"></div>
                 <div class = "but"><button class = "loc" onclick = myFunction(0)>Flåkoia</button></div>
                 <div class = "but"><button class = "loc" onclick = myFunction(1)>Fosenkoia</button></div>
@@ -39,7 +38,7 @@
                 <div class = "but"><button class = "loc" onclick = myFunction(21)>Øvensenget</button></div>
             </div>
             <div id = "overskrift">    
-                <h1>Oversiktskart<h1>
+                <h1>Oversiktskart over koier<h1>
             </div>
 			<div id="map"></div>
 		</div>
@@ -71,7 +70,7 @@
 				];
 
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 7,
+      zoom: 8,
       center: new google.maps.LatLng(63.12292, 10.59167),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
