@@ -38,35 +38,49 @@
                 <div class = "but"><button class = "loc" onclick = myFunction(21)>Øvensenget</button></div>
             </div>
             <div id = "overskrift">    
-                <h1>Oversiktskart over koier<h1>
+                <h1 id = "mainHeader">Oversiktskart over koier<h1>
             </div>
 			<div id="map"></div>
 		</div>
 
   <script type="text/javascript">
+    
+    function InfoWindowContent(name, sPlasser,bPlasser, sykler, gitar, vJern){
+       return '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">'+name+'</h1>'+
+      '<div id="bodyContent">'+
+      '<h3>Status </h3>'+
+      '<p><b>Senge plasser: </b>' + sPlasser + ' <b>Bord Plasser: </b>'+ bPlasser + ' <b>' +
+       'Sykkel: </b>' + sykler + ' <b>Gitar: </b>'+ gitar + ' <b>Vaffel Jern: </b>'+ vJern +'</p>' +
+      '</div>'+
+      '</div>';
+    }
+  
     var locations = [
-				['Flåkoia', 63.15702,10.36538, 1],
-				['Fosenkoia', 63.56813, 10.29541, 2],
-				['Heinfjordstua', 63.31492,10.75206, 3],
-				['Hognabu',63.10875,11.53450, 4],
-				['Holmsåkoia',63.08642, 11.64870, 5],
-				['Holvassgamma',  63.82745, 10.37133, 6],
-				['Iglbu', 62.96119, 10.09028, 7],
-				['Kamtjønnkoia', 62.74317, 09.29119, 8],
-				['Kråklikåten', 63.12292, 10.59167, 9],
-				['Kåsen', 63.12375, 09.44338, 10],
-				['Lynhøgen', 63.21028, 10.70875, 11],
-				['Mortenskåten', 63.01650, 10.95894, 12],
-				['Nicokoia', 63.16349, 10.52637, 13],
-				['Rindalsløa', 63.01999, 09.19786, 14],
-				['Selbukåten', 63.32851, 11.02758, 15],
-				['Sonvasskoia', 63.39030, 11.41852, 16],
-				['Stabburet', 63.14200, 11.72236, 17],
-				['Stakkslettbua', 63.14713, 09.11576 , 18],	
-				['Telin', 62.87615, 09.66196, 19],
-				['Taagaabu', 62.82197, 10.60875, 20],
-				['Vekvessætra', 62.70850, 09.80087, 21],
-				['Øvensenget', 62.41219, 11.18655, 22]
+				[InfoWindowContent("Flåkoia", 11, 14, "x", "x","-"), 63.15702,10.36538, 1],
+				[InfoWindowContent('Fosenkoia',10,12,'-','x','x'), 63.56813, 10.29541, 2],
+				[InfoWindowContent('Heinfjordstua', 25, 25, 'x','x','x'), 63.31492,10.75206, 3],
+				[InfoWindowContent('Hognabu', 6, 6, '-', 'x', 'x'),63.10875,11.53450, 4],
+				[InfoWindowContent('Holmsåkoia', 20, 25, 'x','x', '-'),63.08642, 11.64870, 5],
+				[InfoWindowContent('Holvassgamma', 8, 16,'-', 'x', 'x'),  63.82745, 10.37133, 6],
+				[InfoWindowContent('Iglbu', 8, 14, '(x)', 'x', '-'), 62.96119, 10.09028, 7],
+				[InfoWindowContent('Kamtjønnkoia', 6, 10, '-', '-', '-'), 62.74317, 09.29119, 8],
+				[InfoWindowContent('Kråklikåten', 4, 6, '(x)', '-', '-'), 63.12292, 10.59167, 9],
+				[InfoWindowContent('Kåsen', 8, 12, '(x)', 'x', '-'), 63.12375, 09.44338, 10],
+				[InfoWindowContent('Lynhøgen', 4, 8, '(x)', '-', '-'), 63.21028, 10.70875, 11],
+				[InfoWindowContent('Mortenskåten',2,4, '(x)', '-', 'x'), 63.01650, 10.95894, 12],
+				[InfoWindowContent('Nicokoia', 8, 12, '-', 'x', '-'), 63.16349, 10.52637, 13],
+				[InfoWindowContent('Rindalsløa',4,6,'(x)', 'x', 'x'), 63.01999, 09.19786, 14],
+				[InfoWindowContent('Selbukåten', 2, 4, '(x)', '-', '-'), 63.32851, 11.02758, 15],
+				[InfoWindowContent('Sonvasskoia', 8, 12, 'x', 'x', '-'), 63.39030, 11.41852, 16],
+				[InfoWindowContent('Stabburet', 2, 4,'(x)', 'x', '-'), 63.14200, 11.72236, 17],
+				[InfoWindowContent('Stakkslettbua',11,15,'(x)', 'x', 'x'),63.14713, 09.11576 , 18],	
+				[InfoWindowContent('Telin', 9, 12, 'x', 'x', 'x'), 62.87615, 09.66196, 19],
+				[InfoWindowContent('Taagaabu',6,9,'(x)', 'x', 'x'), 62.82197, 10.60875, 20],
+				[InfoWindowContent('Vekvessætra',20,24, 'x', 'x', 'x'), 62.70850, 09.80087, 21],
+				[InfoWindowContent('Øvensenget',8,14, 'x', 'x', 'x'),62.41219, 11.18655, 22]
 				];
 
     var map = new google.maps.Map(document.getElementById('map'), {
